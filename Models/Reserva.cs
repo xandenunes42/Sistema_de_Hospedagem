@@ -20,7 +20,7 @@ namespace Models.Reserva
         {
             Hospedes.Add(hospede);
 
-            Console.WriteLine($"Cadastro efetuado: Nome: {hospede.Nome}");
+            Console.WriteLine($"Cadastro efetuado: \nNome: {hospede.Nome}");
 
         }   
 
@@ -30,6 +30,33 @@ namespace Models.Reserva
             {
                 Console.WriteLine($"Nome: {i.Nome} {i.Sobrenome}");
             }
+        }
+
+        public void CadastrarSuite(Suite suite)
+        {
+            Suites.Add(suite);
+
+            Console.WriteLine($"Suite cadastrada! {suite.TipoSuite}");
+        }
+
+        public void ListarSuites()
+        {
+            foreach(var i in Suites)
+            {
+                Console.WriteLine($"Suite: {i.TipoSuite}\nPreco: {i.ValorDiaria}");
+            }
+        }
+
+        public void ContadorHospedes()
+        {
+            Console.WriteLine($"Total de hospedes: {Hospedes.Count()} ");
+        }
+
+        public decimal ValorFinal(int diasReservados, Suite suite)
+        {
+            decimal result = diasReservados * suite.ValorDiaria;
+            
+            return result;
         }
 
 
