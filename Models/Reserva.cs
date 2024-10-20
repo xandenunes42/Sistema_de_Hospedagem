@@ -18,9 +18,14 @@ namespace Models.Reserva
 
         public void CadastrarHospede(Pessoa hospede)
         {
-            Hospedes.Add(hospede);
-
-            Console.WriteLine($"Cadastro efetuado: \nNome: {hospede.Nome}");
+            if(Hospedes.Count < 5)
+            {
+                Hospedes.Add(hospede);
+            }
+            else
+            {
+                
+            }
 
         }   
 
@@ -54,9 +59,23 @@ namespace Models.Reserva
 
         public decimal ValorFinal(int diasReservados, Suite suite)
         {
-            decimal result = diasReservados * suite.ValorDiaria;
+            decimal result;
+
+            if(diasReservados > 10)
+            {
+            
+            decimal desconto = 0.10M;
+
+            result = diasReservados * (suite.ValorDiaria - (suite.ValorDiaria * desconto));
             
             return result;
+            }
+            else
+            {
+                result = diasReservados * suite.ValorDiaria;
+
+                return result;
+            }
         }
 
 
